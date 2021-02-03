@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using vcsparser.unittests.TestFiles;
 
 namespace vcsparser.unittests.git
 {
@@ -36,7 +37,7 @@ namespace vcsparser.unittests.git
         [Fact]
         public void WhenParsingShouldReturnExpectedResult()
         {
-            var list = GetListWithContent(Resources.GitExample1);
+            var list = GetListWithContent(TestFile.GitExample1);
             var changesets = parser.Parse(list);
 
             Assert.Equal(2, changesets.Count);
@@ -44,7 +45,7 @@ namespace vcsparser.unittests.git
 
         [Fact]
         public void WhenParsingCommitWithDescriptionShouldReturnExpectedValues() {
-            var list = GetListWithContent(Resources.GitExample1);
+            var list = GetListWithContent(TestFile.GitExample1);
 
             GitCommit commit = this.parser.Parse(list)[0];
             Assert.Equal("82419fcdc1fca1f8b14905366159837bfe8a1be4", commit.CommitHash);
@@ -57,7 +58,7 @@ namespace vcsparser.unittests.git
 
         [Fact]
         public void WhenParsingCommitWithoutDescriptionShouldReturnExpectedValues(){
-            var list = GetListWithContent(Resources.GitExample1);
+            var list = GetListWithContent(TestFile.GitExample1);
 
             GitCommit commit = this.parser.Parse(list)[1];
             Assert.Equal("31b45b8417418c3562d19eab8830ed786ac40f40", commit.CommitHash);
@@ -70,7 +71,7 @@ namespace vcsparser.unittests.git
 
         [Fact]
         public void WhenParsingCommitShouldParseStatsCorrectly(){
-            var list = GetListWithContent(Resources.GitExample1);
+            var list = GetListWithContent(TestFile.GitExample1);
 
             GitCommit commit = this.parser.Parse(list)[0];
             Assert.Equal(3, commit.ChangesetFileChanges.Count);
@@ -89,7 +90,7 @@ namespace vcsparser.unittests.git
 
         [Fact]
         public void WhenParsingSubsequentCommitsShouldParseStatsCorrectly() {
-            var list = GetListWithContent(Resources.GitExample1);
+            var list = GetListWithContent(TestFile.GitExample1);
 
             GitCommit commit = this.parser.Parse(list)[1];
             Assert.Equal(2, commit.ChangesetFileChanges.Count);
@@ -102,7 +103,7 @@ namespace vcsparser.unittests.git
         [Fact]
         public void WhenParsingCommitWithBinaryFilesShouldGetResultsCorrectly()
         {
-            var list = GetListWithContent(Resources.GitExample2);
+            var list = GetListWithContent(TestFile.GitExample2);
 
             GitCommit commit = this.parser.Parse(list)[0];
             Assert.Single(commit.ChangesetFileChanges);
@@ -114,7 +115,7 @@ namespace vcsparser.unittests.git
         [Fact]
         public void WhenParsingLogWithRenameHistoryShouldReturnExpectedValues()
         {
-            var list = GetListWithContent(Resources.GitExample3);
+            var list = GetListWithContent(TestFile.GitExample3);
             var commits = this.parser.Parse(list);
 
             Assert.Equal(3, commits.Count);
@@ -159,7 +160,7 @@ namespace vcsparser.unittests.git
         [Fact]
         public void WhenParsingMergeShouldNotThrow()
         {
-            var list = GetListWithContent(Resources.GitExample4);
+            var list = GetListWithContent(TestFile.GitExample4);
 
             this.parser.Parse(list);
         }

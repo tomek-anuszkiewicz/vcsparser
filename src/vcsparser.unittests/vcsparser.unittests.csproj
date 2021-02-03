@@ -5,6 +5,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="TestFiles\ChangesFiles1.txt" />
+    <None Remove="TestFiles\DescribeFile1.txt" />
+    <None Remove="TestFiles\DescribeFile2.txt" />
+    <None Remove="TestFiles\DescribeFile3.txt" />
+    <None Remove="TestFiles\DescribeFile4.txt" />
+    <None Remove="TestFiles\GitExample1.txt" />
+    <None Remove="TestFiles\GitExample2.txt" />
+    <None Remove="TestFiles\GitExample3.txt" />
+    <None Remove="TestFiles\GitExample4.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TestFiles\ChangesFiles1.txt" />
+    <EmbeddedResource Include="TestFiles\DescribeFile1.txt" />
+    <EmbeddedResource Include="TestFiles\DescribeFile2.txt" />
+    <EmbeddedResource Include="TestFiles\DescribeFile3.txt" />
+    <EmbeddedResource Include="TestFiles\DescribeFile4.txt" />
+    <EmbeddedResource Include="TestFiles\GitExample1.txt" />
+    <EmbeddedResource Include="TestFiles\GitExample2.txt" />
+    <EmbeddedResource Include="TestFiles\GitExample3.txt" />
+    <EmbeddedResource Include="TestFiles\GitExample4.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="Moq" Version="4.16.0" />
     <PackageReference Include="xunit" Version="2.4.1" />

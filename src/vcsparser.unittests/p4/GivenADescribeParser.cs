@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using vcsparser.unittests.TestFiles;
 
 namespace vcsparser.unittests
 {
@@ -30,7 +31,7 @@ namespace vcsparser.unittests
         [Fact]
         public void WhenParsingShouldReturnExceptedValues()
         {
-            var lines = GetListWithContent(Resources.DescribeFile1);
+            var lines = GetListWithContent(TestFile.DescribeFile1);
 
             var result = this.parser.Parse(lines);
 
@@ -51,15 +52,15 @@ namespace vcsparser.unittests
         [Fact]
         public void WhenParsingFileWithInvalidChangeLineShouldThrowInvalidFormatException()
         {
-            var lines = GetListWithContent(Resources.DescribeFile2);
-            
+            var lines = GetListWithContent(TestFile.DescribeFile2);
+
             Assert.Throws<InvalidFormatException>(() => { this.parser.Parse(lines); });
         }
 
         [Fact]
         public void WhenParsingFileWithInvalidAuthorShouldThrowInvalidFormatException()
         {
-            var lines = GetListWithContent(Resources.DescribeFile3);
+            var lines = GetListWithContent(TestFile.DescribeFile3);
 
             Assert.Throws<InvalidFormatException>(() => { this.parser.Parse(lines); });
         }
@@ -67,7 +68,7 @@ namespace vcsparser.unittests
         [Fact]
         public void WhenParsingFileWithInvalidDateShouldThrowInvalidFormatException()
         {
-            var lines = GetListWithContent(Resources.DescribeFile4);
+            var lines = GetListWithContent(TestFile.DescribeFile4);
 
             Assert.Throws<InvalidFormatException>(() => { this.parser.Parse(lines); });
         }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using vcsparser.unittests.TestFiles;
 
 namespace vcsparser.unittests
 {
@@ -29,7 +30,7 @@ namespace vcsparser.unittests
         [Fact]
         public void WhenParsingChangesWithValidFileShouldReturnChangeNumbers()
         {
-            var lines = GetListWithContent(Resources.ChangesFiles1);
+            var lines = GetListWithContent(TestFile.ChangesFiles1);
 
             var changeNumbers = this.parser.Parse(lines);
 
